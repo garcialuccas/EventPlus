@@ -1,0 +1,16 @@
+entidades:
+- usuário -> tipo do usuário
+- instituição
+- evento -> tipo do evento
+- comentário
+- inscrição
+
+cada usuário tem um tipo, um tipo de usuário tem vários usuários
+
+cada instituição tem vários eventos, cada evento está em somente uma unidade
+
+cada usuário faz vários comentários, cada comentário pertence a somente um usuário
+
+um usuário pode ir a vários eventos, um evento tem vários usuários
+
+um evento tem vários comentários, um comentário está ligado a somente um evento
