@@ -8,11 +8,11 @@ namespace EventPlus.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TipoUsuarioController : ControllerBase
+    public class TipoEventoController : ControllerBase
     {
-        private readonly ITipoUsuario _repository;
+        private readonly ITipoEvento _repository;
 
-        public TipoUsuarioController(ITipoUsuario repository)
+        public TipoEventoController(ITipoEvento repository)
         {
             _repository = repository;
         }
@@ -45,11 +45,11 @@ namespace EventPlus.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar([FromBody] TipoUsuarioDTO dto)
+        public async Task<IActionResult> Cadastrar([FromBody] TipoEventoDTO dto)
         {
-            var tp = new TipoUsuario
+            var tp = new TipoEvento
             {
-                TituloTipoUsuario = dto.TituloTipoUsuario
+                TituloTipoEvento = dto.TituloTipoEvento
             };
 
             try
@@ -64,22 +64,22 @@ namespace EventPlus.WebAPI.Controllers
         }
 
         [HttpPut("{id:Guid}")]
-        public async Task<IActionResult> Atualzar(Guid id, [FromBody] TipoUsuarioDTO dto)
+        public async Task<IActionResult> Atualzar(Guid id, [FromBody] TipoEventoDTO dto)
         {
-            var tp = new TipoUsuario
+            var tp = new TipoEvento
             {
-                TituloTipoUsuario = dto.TituloTipoUsuario
+                TituloTipoEvento = dto.TituloTipoEvento
             };
 
             await _repository.Atualizar(id, tp);
-            return Ok();
+            return Ok(tp);
         }
 
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Deletar(Guid id)
         {
             await _repository.Deletar(id);
-            return Ok();
+            return NoContent();
         }
     }
 }

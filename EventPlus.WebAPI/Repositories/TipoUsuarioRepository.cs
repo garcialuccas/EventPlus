@@ -14,24 +14,36 @@ namespace EventPlus.WebAPI.Repositories
             _dbContext = dbContext;
         }
 
-        public Task Atualizar(Guid id, TipoUsuario tipoUsuario)
+        public async Task Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
-            throw new NotImplementedException();
+            var tp = await _dbContext.TipoUsuario.FindAsync(id);
+            if (tp != null)
+            {
+                tp.TituloTipoUsuario = tipoUsuario.TituloTipoUsuario;
+                _dbContext.TipoUsuario.Update(tp);
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
-        public Task<TipoUsuario> BuscarPorId(Guid id)
+        public async Task<TipoUsuario?> BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.TipoUsuario.FirstOrDefaultAsync(Tp => Tp.IdTipoUsuario == id);
         }
 
-        public Task Cadastrar(TipoUsuario tipoUsuario)
+        public async Task Cadastrar(TipoUsuario tipoUsuario)
         {
-            throw new NotImplementedException();
+            await _dbContext.TipoUsuario.AddAsync(tipoUsuario);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task Deletar(Guid id)
+        public async Task Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            var tp = await _dbContext.TipoUsuario.FindAsync(id);
+            if (tp != null)
+            {
+                _dbContext.TipoUsuario.Remove(tp);
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
         public async Task<List<TipoUsuario>> Listar()
