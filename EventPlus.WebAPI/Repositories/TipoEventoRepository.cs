@@ -30,10 +30,11 @@ namespace EventPlus.WebAPI.Repositories
             return await _dbContext.TipoEvento.FirstOrDefaultAsync(te => te.IdTipoEvento == id);
         }
 
-        public async Task Cadastrar(TipoEvento TipoEvento)
+        public async Task<TipoEvento> Cadastrar(TipoEvento tipoEvento)
         {
-            await _dbContext.TipoEvento.AddAsync(TipoEvento);
+            await _dbContext.TipoEvento.AddAsync(tipoEvento);
             await _dbContext.SaveChangesAsync();
+            return await _dbContext.TipoEvento.FindAsync(tipoEvento);
         }
 
         public async Task Deletar(Guid id)

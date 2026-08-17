@@ -2,6 +2,7 @@
 using EventPlus.WebAPI.Interfaces;
 using EventPlus.WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EventPlus.WebAPI.Repositories
 {
@@ -20,9 +21,9 @@ namespace EventPlus.WebAPI.Repositories
 
             if (iBuscado != null)
             {
-                iBuscado.Cnpj = i.Cnpj;
-                iBuscado.NomeFantasia = i.NomeFantasia;
-                iBuscado.Endereco = i.Endereco;
+                iBuscado.Cnpj = i.Cnpj.IsNullOrEmpty() ? iBuscado.Cnpj : i.Cnpj;
+                iBuscado.NomeFantasia = i.NomeFantasia.IsNullOrEmpty() ? iBuscado.NomeFantasia : i.NomeFantasia;
+                iBuscado.Endereco = i.Endereco.IsNullOrEmpty() ? iBuscado.Endereco : i.Endereco ;
                 _dbContext.Update(iBuscado);
                 await _dbContext.SaveChangesAsync();
             }
@@ -33,10 +34,11 @@ namespace EventPlus.WebAPI.Repositories
             return await _dbContext.Instituicao.FirstOrDefaultAsync(i => i.IdInstituicao == id);
         }
 
-        public async Task Cadastrar(Instituicao i)
+        public async Task<Instituicao> Cadastrar(Instituicao i)
         {
             await _dbContext.Instituicao.AddAsync(i);
             await _dbContext.SaveChangesAsync();
+            return await _dbContext.Instituicao.FindAsync(i);
         }
 
         public async Task Deletar(Guid id)

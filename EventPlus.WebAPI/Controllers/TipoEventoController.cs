@@ -47,15 +47,14 @@ namespace EventPlus.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar([FromBody] TipoEventoDTO dto)
         {
-            var tp = new TipoEvento
-            {
-                TituloTipoEvento = dto.TituloTipoEvento
-            };
 
             try
             {
-                await _repository.Cadastrar(tp);
-                return StatusCode(201, tp);
+                var tp = new TipoEvento
+                {
+                    TituloTipoEvento = dto.TituloTipoEvento
+                };
+                return StatusCode(201, await _repository.Cadastrar(tp));
             }
             catch
             {

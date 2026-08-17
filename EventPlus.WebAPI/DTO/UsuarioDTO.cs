@@ -10,13 +10,14 @@ namespace EventPlus.WebAPI.DTO
         public string Nome { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O email é obrigatório")]
+        [EmailAddress(ErrorMessage = "Informe um email válido")]
         [StringLength(256, ErrorMessage = "O email deve ter no máximo 256 caracteres")]
         public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "A senha é obrigatória")]
-        [StringLength(60, ErrorMessage = "A senha deve ter no máximo 60 caracteres")]
+        [StringLength(60, MinimumLength = 8,ErrorMessage = "A senha deve ter entre 8 e 60 caracteres")]
         public string Senha {  get; set; } = string.Empty;
 
-        public Guid? idTipoUsuatio { get; set; }
+        public Guid? idTipoUsuario { get; set; }
     }
 }

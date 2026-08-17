@@ -47,17 +47,16 @@ namespace EventPlus.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar([FromBody] InstituicaoDTO dto)
         {
-            var i = new Instituicao
-            {
-                NomeFantasia = dto.NomeFantasia,
-                Endereco = dto.Endereco,
-                Cnpj = dto.Cnpj,
-            };
 
             try
             {
-                await _repository.Cadastrar(i);
-                return Ok();
+                var i = new Instituicao
+                {
+                    NomeFantasia = dto.NomeFantasia,
+                    Endereco = dto.Endereco,
+                    Cnpj = dto.Cnpj,
+                };
+                return StatusCode(201, await _repository.Cadastrar(i));
             }
             catch
             {
@@ -66,13 +65,13 @@ namespace EventPlus.WebAPI.Controllers
         }
 
         [HttpPatch("{id:Guid}")]
-        public async Task<IActionResult> Atualizar(Guid id, string cnpj, string nomeFantasia, string endereco)
+        public async Task<IActionResult> Atualizar(Guid id, [FromBody] EdicaoInstituicaoDTO dto)
         {
             var i = new Instituicao
             {
-                Cnpj = cnpj,
-                NomeFantasia = nomeFantasia,
-                Endereco = endereco
+                Cnpj = dto.Cnpj,
+                NomeFantasia = dto.NomeFantasia,
+                Endereco = dto.Endereco
             };
 
             try

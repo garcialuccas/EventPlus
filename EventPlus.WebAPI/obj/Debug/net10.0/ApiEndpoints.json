@@ -1,5 +1,110 @@
 [
   {
+    "ContainingType": "EventPlus.WebAPI.Controllers.EventoController",
+    "Method": "Cadastrar",
+    "RelativePath": "api/Evento",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "EventPlus.WebAPI.Models.EventoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus.WebAPI.Controllers.EventoController",
+    "Method": "Atualizar",
+    "RelativePath": "api/Evento/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "EventPlus.WebAPI.Models.EdicaoEventoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus.WebAPI.Controllers.EventoController",
+    "Method": "Deletar",
+    "RelativePath": "api/Evento/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus.WebAPI.Controllers.EventoController",
+    "Method": "Listar",
+    "RelativePath": "api/Evento/Listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus.WebAPI.Controllers.EventoController",
+    "Method": "ListarPorInscrito",
+    "RelativePath": "api/Evento/ListarPorInscrito/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus.WebAPI.Controllers.EventoController",
+    "Method": "ListarPorInstituicao",
+    "RelativePath": "api/Evento/ListarPorInstituicao/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus.WebAPI.Controllers.EventoController",
+    "Method": "ListarProximos",
+    "RelativePath": "api/Evento/ListarProximos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "EventPlus.WebAPI.Controllers.InstituicaoController",
     "Method": "Cadastrar",
     "RelativePath": "api/Instituicao",
@@ -45,19 +150,9 @@
         "IsRequired": true
       },
       {
-        "Name": "cnpj",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "nomeFantasia",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "endereco",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "EventPlus.WebAPI.DTO.EdicaoInstituicaoDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -327,7 +422,7 @@
   },
   {
     "ContainingType": "EventPlus.WebAPI.Controllers.UsuarioController",
-    "Method": "BuscarPorEmailSenha",
+    "Method": "BuscarPorEmail",
     "RelativePath": "api/Usuario/Login",
     "HttpMethod": "POST",
     "IsController": true,
@@ -344,7 +439,7 @@
   {
     "ContainingType": "EventPlus.WebAPI.Controllers.UsuarioController",
     "Method": "NovaPresenca",
-    "RelativePath": "api/Usuario/NovaPresenca/{id}",
+    "RelativePath": "api/Usuario/NovaPresenca/{id}/{idEvento}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -352,7 +447,7 @@
       {
         "Name": "idEvento",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "id",

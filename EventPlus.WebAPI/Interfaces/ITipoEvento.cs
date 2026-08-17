@@ -5,7 +5,7 @@ namespace EventPlus.WebAPI.Interfaces
 {
     public interface ITipoEvento
     {
-        Task Cadastrar(TipoEvento TipoEvento);
+        Task<TipoEvento> Cadastrar(TipoEvento TipoEvento);
 
         Task<List<TipoEvento>> Listar();
 

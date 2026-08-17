@@ -1,7 +1,9 @@
 ﻿using EventPlus.WebAPI.BdContextEvent;
 using EventPlus.WebAPI.Interfaces;
 using EventPlus.WebAPI.Models;
+using EventPlus.WebAPI.Utils;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EventPlus.WebAPI.Repositories
 {
@@ -20,19 +22,19 @@ namespace EventPlus.WebAPI.Repositories
 
             if (usuarioBuscado != null)
             {
-                usuarioBuscado.Nome = u.Nome;
-                usuarioBuscado.Email = u.Email;
-                usuarioBuscado.Senha = u.Senha;
-                usuarioBuscado.IdTipoUsuario = u.IdTipoUsuario;
+                usuarioBuscado.Nome = u.Nome.IsNullOrEmpty() ? usuarioBuscado.Nome : u.Nome;
+                usuarioBuscado.Email = u.Email.IsNullOrEmpty()? usuarioBuscado.Email: u.Email;
+                usuarioBuscado.Senha = u.Senha.IsNullOrEmpty() ? usuarioBuscado.Senha : CriptografiaUsuario.CriptografarSenha(u.Senha);
+                usuarioBuscado.IdTipoUsuario = u.IdTipoUsuario == null ? usuarioBuscado.IdTipoUsuario : u.IdTipoUsuario;
 
                 _dbContext.Usuario.Update(usuarioBuscado);
                 await _dbContext.SaveChangesAsync();
             }
         }
 
-        public async Task<Usuario?> BuscarPorEmailSenha(string email, string senha)
+        public async Task<Usuario?> BuscarPorEmail(string email)
         {
-            return await _dbContext.Usuario.FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
+            return await _dbContext.Usuario.FirstOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task<Usuario?> BuscarPorId(Guid id)
@@ -40,10 +42,12 @@ namespace EventPlus.WebAPI.Repositories
             return await _dbContext.Usuario.FirstOrDefaultAsync(u => u.IdUsuario == id);
         }
 
-        public async Task Cadastrar(Usuario u)
+        public async Task<Usuario> Cadastrar(Usuario u)
         {
+            u.Senha = CriptografiaUsuario.CriptografarSenha(u.Senha);
             await _dbContext.Usuario.AddAsync(u);
             await _dbContext.SaveChangesAsync();
+            return await _dbContext.Usuario.FindAsync(u);
         }
 
         public async Task Deletar(Guid id)
@@ -58,7 +62,7 @@ namespace EventPlus.WebAPI.Repositories
 
         public async Task<List<Usuario>> Listar()
         {
-            return await _dbContext.Usuario.AsNoTracking().ToListAsync();
+            return await _dbContext.Usuario.Include(u => u.IdTipoUsuarioNavigation).AsNoTracking().ToListAsync();
         }
 
         public async Task NovaPresenca(Guid idEvento, Guid idUsuario)

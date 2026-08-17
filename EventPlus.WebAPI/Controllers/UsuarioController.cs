@@ -1,6 +1,7 @@
 ﻿using EventPlus.WebAPI.DTO;
 using EventPlus.WebAPI.Interfaces;
 using EventPlus.WebAPI.Models;
+using EventPlus.WebAPI.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -35,18 +36,16 @@ namespace EventPlus.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar([FromBody] UsuarioDTO dto)
         {
-            Usuario u = new Usuario
-            {
-                Nome = dto.Nome,
-                Email = dto.Email,
-                Senha = dto.Senha,
-                IdTipoUsuario = dto.idTipoUsuatio
-            };
-
             try
             {
-                await _repository.Cadastrar(u);
-                return StatusCode(201, u);
+                Usuario u = new Usuario
+                {
+                    Nome = dto.Nome,
+                    Email = dto.Email,
+                    Senha = dto.Senha,
+                    IdTipoUsuario = dto.idTipoUsuario
+                };
+                return StatusCode(201, await _repository.Cadastrar(u));
             }
             catch
             {
@@ -89,11 +88,17 @@ namespace EventPlus.WebAPI.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> BuscarPorEmailSenha([FromBody] LoginDTO dto)
+        public async Task<IActionResult> BuscarPorEmail([FromBody] LoginDTO dto)
         {
             try
             {
-                return Ok(await _repository.BuscarPorEmailSenha(dto.email, dto.senha));
+                var u = await _repository.BuscarPorEmail(dto.email);
+                if (u == null || !CriptografiaUsuario.VerificarSenha(dto.senha, u.Senha))
+                {
+                    return Unauthorized("Email ou senha inválidos");
+                }
+
+                return Ok("Login autorizado");
             }
             catch
             {
@@ -115,7 +120,7 @@ namespace EventPlus.WebAPI.Controllers
             }
         }
 
-        [HttpPost("NovaPresenca/{id:Guid}")]
+        [HttpPost("NovaPresenca/{id:Guid}/{idEvento:Guid}")]
         public async Task<IActionResult> NovaPresenca(Guid idEvento, Guid id)
         {
             try

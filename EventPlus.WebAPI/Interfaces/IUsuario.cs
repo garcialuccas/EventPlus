@@ -4,7 +4,7 @@ namespace EventPlus.WebAPI.Interfaces
 {
     public interface IUsuario
     {
-        Task Cadastrar(Usuario u);
+        Task<Usuario> Cadastrar(Usuario u);
 
         Task<List<Usuario>> Listar();
 
@@ -14,7 +14,7 @@ namespace EventPlus.WebAPI.Interfaces
 
         Task<Usuario?> BuscarPorId(Guid id);
 
-        Task<Usuario?> BuscarPorEmailSenha(string email, string senha);
+        Task<Usuario?> BuscarPorEmail(string email);
 
         Task NovaPresenca(Guid idEvento, Guid idUsuario);
     }
