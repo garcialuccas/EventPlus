@@ -17,6 +17,8 @@ builder.Services.AddScoped<ITipoEvento, TipoEventoRepository>();
 builder.Services.AddScoped<IUsuario, UsuarioRepository>();
 builder.Services.AddScoped<IInstituicao, InstituicaoRepository>();
 builder.Services.AddScoped<IEvento,  EventoRepository>();
+builder.Services.AddScoped<IComentario,  ComentarioRepository>();
+builder.Services.AddScoped<IPresenca,  PresencaRepository>();
 
 builder.Services.AddControllers();
 

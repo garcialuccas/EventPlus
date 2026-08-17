@@ -1,0 +1,112 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: TipoEvento
+meta:
+  id: wrk_99a2340789744d6db70f04020db0245f
+  created: 1786734137938
+  modified: 1786734137938
+  description: ""
+collection:
+  - url: https://localhost:7187/api/TipoEvento
+    name: Listar Tipo Eventos
+    meta:
+      id: req_c30d8ecbae3d4a60886ac2bf34bd9d39
+      created: 1786734180733
+      modified: 1786734359052
+      isPrivate: false
+      description: ""
+      sortKey: -1786734180733
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/TipoEvento
+    name: Cadastrar Tipo Evento
+    meta:
+      id: req_1252abd27b084eafab19f474a56b88c9
+      created: 1786734331128
+      modified: 1786734736095
+      isPrivate: false
+      description: ""
+      sortKey: -1786734331128
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"TituloTipoEvento": "Encontro"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/TipoEvento/fc102705-2b21-43c6-951d-8fff3f275bc1
+    name: Deletar Tipo Evento
+    meta:
+      id: req_5f1f15ad7cdd49fea857e1b44bae456d
+      created: 1786734753594
+      modified: 1786734830652
+      isPrivate: false
+      description: ""
+      sortKey: -1786734753594
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/TipoEvento/819bd7d1-0304-4d34-920b-03ffb1819796
+    name: Atualizar Tipo Evento
+    meta:
+      id: req_10f45bfe6db44ed7a67be6ce46d1c119
+      created: 1786734857482
+      modified: 1786971737059
+      isPrivate: false
+      description: ""
+      sortKey: -1786734857482
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"TiTuloTipoEvento": "Encontro na hamburgueria as 20h"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_b112ec278e28db7a9e9b87f34540153e95edd88f
+    created: 1786734137948
+    modified: 1786734137948
+environments:
+  name: Base Environment
+  meta:
+    id: env_b112ec278e28db7a9e9b87f34540153e95edd88f
+    created: 1786734137945
+    modified: 1786734137945
+    isPrivate: false

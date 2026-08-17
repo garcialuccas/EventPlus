@@ -1,0 +1,136 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: TipoUsuario
+meta:
+  id: wrk_f2279dfa13a84e61888a42162c396c31
+  created: 1786708165560
+  modified: 1786715703633
+  description: ""
+collection:
+  - url: https://localhost:7187/api/TipoUsuario
+    name: Novo Tipo Usuario
+    meta:
+      id: req_0c2cb1a4c1124bdba86bb03df101f988
+      created: 1786708166268
+      modified: 1786715747191
+      isPrivate: false
+      description: ""
+      sortKey: -1786708166268
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"TituloTipoUsuario": "Professor"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/TipoUsuario
+    name: Listar Todos Tipos Usuarios
+    meta:
+      id: req_0542acb91c424058959afd4299e9b872
+      created: 1786708894973
+      modified: 1786716997550
+      isPrivate: false
+      description: ""
+      sortKey: -1786708894973
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/TipoUsuario/2fa5d3a5-e85f-40d6-8b47-dab6741b4410
+    name: Deletar Tipo Usuario
+    meta:
+      id: req_df482696588648faae9f58531ece6c5b
+      created: 1786715793986
+      modified: 1786715978491
+      isPrivate: false
+      description: ""
+      sortKey: -1786715793986
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/TipoUsuario/2a3423da-20c5-4487-966f-6f7870f4a5b1
+    name: Atualizar Tipo Usuario
+    meta:
+      id: req_ac0119dcc27746508d7b16a606c0228f
+      created: 1786716009073
+      modified: 1786717011642
+      isPrivate: false
+      description: ""
+      sortKey: -1786716009073
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"tituloTipoUsuario": "Palestrante"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/TipoUsuario/2a3423da-20c5-4487-966f-6f7870f4a5b1
+    name: Buscar por Id Tipo Usuario
+    meta:
+      id: req_d4d89b409bfd43f79b5678509a0a8d61
+      created: 1786716290520
+      modified: 1786717018736
+      isPrivate: false
+      description: ""
+      sortKey: -1786716290520
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_16b6559617dc234b99033857cc65287d531607fe
+    created: 1786708165573
+    modified: 1786708165573
+environments:
+  name: Base Environment
+  meta:
+    id: env_16b6559617dc234b99033857cc65287d531607fe
+    created: 1786708165565
+    modified: 1786708165565
+    isPrivate: false
