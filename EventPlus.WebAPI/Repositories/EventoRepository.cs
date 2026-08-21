@@ -21,10 +21,10 @@ namespace EventPlus.WebAPI.Repositories
 
             if (e != null)
             {
-                e.NomeEvento = eventoAtualizado.NomeEvento.IsNullOrEmpty() ? e.NomeEvento : eventoAtualizado.NomeEvento;
+                e.NomeEvento = string.IsNullOrEmpty(eventoAtualizado.NomeEvento) ? e.NomeEvento : eventoAtualizado.NomeEvento;
                 e.DataEvento = eventoAtualizado.DataEvento == DateTime.MinValue ? e.DataEvento : eventoAtualizado.DataEvento;
-                e.Descricao = eventoAtualizado.Descricao.IsNullOrEmpty() ? e.Descricao : eventoAtualizado.Descricao;
-                e.ImagemUrl = eventoAtualizado.ImagemUrl.IsNullOrEmpty() ? e.ImagemUrl : eventoAtualizado.ImagemUrl;
+                e.Descricao = string.IsNullOrEmpty(eventoAtualizado.Descricao) ? e.Descricao : eventoAtualizado.Descricao;
+                e.ImagemUrl = string.IsNullOrEmpty(eventoAtualizado.ImagemUrl) ? e.ImagemUrl : eventoAtualizado.ImagemUrl;
                 e.IdTipoEvento = eventoAtualizado.IdTipoEvento == null ? e.IdTipoEvento : eventoAtualizado.IdTipoEvento;
                 e.IdInstituicao = eventoAtualizado.IdInstituicao == null ? e.IdInstituicao : eventoAtualizado.IdInstituicao;
 
@@ -42,7 +42,7 @@ namespace EventPlus.WebAPI.Repositories
         {
             await _context.Evento.AddAsync(e);
             await _context.SaveChangesAsync();
-            return await _context.Evento.FindAsync(e);
+            return await _context.Evento.FindAsync(e.IdEvento);
         }
 
         public async Task Deletar(Guid id)

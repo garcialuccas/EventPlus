@@ -9,7 +9,7 @@ namespace EventPlus.WebAPI.Utils
 
         public static string CriptografarSenha(string senhaOriginal)
         {
-            if (senhaOriginal.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(senhaOriginal))
             {
                 return string.Empty;
             }
@@ -19,7 +19,7 @@ namespace EventPlus.WebAPI.Utils
 
         public static bool VerificarSenha(string senhaOriginal, string senhaCriptografada)
         {
-            if (senhaOriginal.IsNullOrEmpty() || senhaOriginal.IsNullOrEmpty())
+            if (string.IsNullOrWhiteSpace(senhaOriginal) || string.IsNullOrWhiteSpace(senhaOriginal))
             {
                 return false;
             }

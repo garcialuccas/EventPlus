@@ -18,8 +18,7 @@ public partial class EventoDTO
     [Required(ErrorMessage = "A Descrição do evento é obrigatória")]
     public string Descricao { get; set; } = string.Empty;
 
-    [StringLength(200)]
-    public string? ImagemUrl { get; set; }
+    public IFormFile? ImagemUrl { get; set; }
 
     public Guid? IdTipoEvento { get; set; }
 

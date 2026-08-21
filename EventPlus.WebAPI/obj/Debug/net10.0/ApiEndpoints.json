@@ -33,6 +33,16 @@
   },
   {
     "ContainingType": "EventPlus.WebAPI.Controllers.ComentarioController",
+    "Method": "ListarOcultos",
+    "RelativePath": "api/Comentario/ComentariosOcultos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventPlus.WebAPI.Controllers.ComentarioController",
     "Method": "ListarPorEvento",
     "RelativePath": "api/Comentario/Evento/{idEvento}",
     "HttpMethod": "GET",
@@ -82,9 +92,34 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "EventPlus.WebAPI.Models.EventoDTO",
-        "IsRequired": true
+        "Name": "NomeEvento",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DataEvento",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descricao",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImagemUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdTipoEvento",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdInstituicao",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -258,6 +293,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "EventPlus.WebAPI.Controllers.LoginController",
+    "Method": "BuscarPorEmail",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "EventPlus.WebAPI.DTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "EventPlus.WebAPI.Controllers.PresencaController",
     "Method": "Cadastrar",
     "RelativePath": "api/Presenca",
@@ -308,7 +359,7 @@
   {
     "ContainingType": "EventPlus.WebAPI.Controllers.PresencaController",
     "Method": "ListarPresencasEvento",
-    "RelativePath": "api/Presenca/{id}",
+    "RelativePath": "api/Presenca/{idEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -316,11 +367,6 @@
       {
         "Name": "idEvento",
         "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -568,22 +614,6 @@
       {
         "Name": "id",
         "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EventPlus.WebAPI.Controllers.UsuarioController",
-    "Method": "BuscarPorEmail",
-    "RelativePath": "api/Usuario/Login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "EventPlus.WebAPI.DTO.LoginDTO",
         "IsRequired": true
       }
     ],

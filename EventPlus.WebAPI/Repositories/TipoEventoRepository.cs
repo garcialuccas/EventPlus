@@ -34,7 +34,7 @@ namespace EventPlus.WebAPI.Repositories
         {
             await _dbContext.TipoEvento.AddAsync(tipoEvento);
             await _dbContext.SaveChangesAsync();
-            return await _dbContext.TipoEvento.FindAsync(tipoEvento);
+            return await _dbContext.TipoEvento.FindAsync(tipoEvento.IdTipoEvento);
         }
 
         public async Task Deletar(Guid id)

@@ -77,7 +77,7 @@ namespace EventPlus.WebAPI.Controllers
             }
         }
 
-        [HttpGet("{id:Guid}")]
+        [HttpGet("{idEvento:Guid}")]
         public async Task<IActionResult> ListarPresencasEvento(Guid idEvento)
         {
             try

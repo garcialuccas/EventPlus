@@ -34,7 +34,7 @@ namespace EventPlus.WebAPI.Repositories
         {
             await _dbContext.TipoUsuario.AddAsync(tipoUsuario);
             await _dbContext.SaveChangesAsync();
-            return await _dbContext.TipoUsuario.FindAsync(tipoUsuario);
+            return await _dbContext.TipoUsuario.FindAsync(tipoUsuario.IdTipoUsuario);
         }
 
         public async Task Deletar(Guid id)

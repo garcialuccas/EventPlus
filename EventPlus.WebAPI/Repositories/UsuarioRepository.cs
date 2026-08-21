@@ -22,9 +22,9 @@ namespace EventPlus.WebAPI.Repositories
 
             if (usuarioBuscado != null)
             {
-                usuarioBuscado.Nome = u.Nome.IsNullOrEmpty() ? usuarioBuscado.Nome : u.Nome;
-                usuarioBuscado.Email = u.Email.IsNullOrEmpty()? usuarioBuscado.Email: u.Email;
-                usuarioBuscado.Senha = u.Senha.IsNullOrEmpty() ? usuarioBuscado.Senha : CriptografiaUsuario.CriptografarSenha(u.Senha);
+                usuarioBuscado.Nome = string.IsNullOrEmpty(u.Nome) ? usuarioBuscado.Nome : u.Nome;
+                usuarioBuscado.Email = string.IsNullOrEmpty(u.Email) ? usuarioBuscado.Email: u.Email;
+                usuarioBuscado.Senha = string.IsNullOrEmpty(u.Senha) ? usuarioBuscado.Senha : CriptografiaUsuario.CriptografarSenha(u.Senha);
                 usuarioBuscado.IdTipoUsuario = u.IdTipoUsuario == null ? usuarioBuscado.IdTipoUsuario : u.IdTipoUsuario;
 
                 _dbContext.Usuario.Update(usuarioBuscado);
@@ -47,7 +47,7 @@ namespace EventPlus.WebAPI.Repositories
             u.Senha = CriptografiaUsuario.CriptografarSenha(u.Senha);
             await _dbContext.Usuario.AddAsync(u);
             await _dbContext.SaveChangesAsync();
-            return await _dbContext.Usuario.FindAsync(u);
+            return await _dbContext.Usuario.FindAsync(u.IdUsuario);
         }
 
         public async Task Deletar(Guid id)

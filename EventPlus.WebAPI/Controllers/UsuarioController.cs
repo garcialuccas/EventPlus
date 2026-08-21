@@ -87,25 +87,6 @@ namespace EventPlus.WebAPI.Controllers
             }
         }
 
-        [HttpPost("Login")]
-        public async Task<IActionResult> BuscarPorEmail([FromBody] LoginDTO dto)
-        {
-            try
-            {
-                var u = await _repository.BuscarPorEmail(dto.email);
-                if (u == null || !CriptografiaUsuario.VerificarSenha(dto.senha, u.Senha))
-                {
-                    return Unauthorized("Email ou senha inválidos");
-                }
-
-                return Ok("Login autorizado");
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
-        }
-
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Deletar(Guid id)
         {

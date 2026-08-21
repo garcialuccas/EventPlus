@@ -21,9 +21,9 @@ namespace EventPlus.WebAPI.Repositories
 
             if (iBuscado != null)
             {
-                iBuscado.Cnpj = i.Cnpj.IsNullOrEmpty() ? iBuscado.Cnpj : i.Cnpj;
-                iBuscado.NomeFantasia = i.NomeFantasia.IsNullOrEmpty() ? iBuscado.NomeFantasia : i.NomeFantasia;
-                iBuscado.Endereco = i.Endereco.IsNullOrEmpty() ? iBuscado.Endereco : i.Endereco ;
+                iBuscado.Cnpj = string.IsNullOrEmpty(i.Cnpj) ? iBuscado.Cnpj : i.Cnpj;
+                iBuscado.NomeFantasia = string.IsNullOrEmpty(i.NomeFantasia) ? iBuscado.NomeFantasia : i.NomeFantasia;
+                iBuscado.Endereco = string.IsNullOrEmpty(i.Endereco) ? iBuscado.Endereco : i.Endereco ;
                 _dbContext.Update(iBuscado);
                 await _dbContext.SaveChangesAsync();
             }
@@ -38,7 +38,7 @@ namespace EventPlus.WebAPI.Repositories
         {
             await _dbContext.Instituicao.AddAsync(i);
             await _dbContext.SaveChangesAsync();
-            return await _dbContext.Instituicao.FindAsync(i);
+            return await _dbContext.Instituicao.FindAsync(i.IdInstituicao);
         }
 
         public async Task Deletar(Guid id)
