@@ -1,0 +1,122 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Presença
+meta:
+  id: wrk_46fcc99e9609431a83ca65d296685b72
+  created: 1787330336772
+  modified: 1787330336772
+  description: ""
+collection:
+  - url: https://localhost:7187/api/Presenca/Listar
+    name: Listar Presenças
+    meta:
+      id: req_8eaa7533f0bb4e0e80963e316d584b41
+      created: 1787330358257
+      modified: 1787331064109
+      isPrivate: false
+      description: ""
+      sortKey: -1787330358257
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Presenca/
+    name: Cadastrar Presença
+    meta:
+      id: req_b74b19665cfc4272992bf46194f5a66f
+      created: 1787330482648
+      modified: 1787330609718
+      isPrivate: false
+      description: ""
+      sortKey: -1787330482648
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"idUsuario" : "42b2b205-fc4b-4913-9a85-48124c7d6bab",
+        	"idEvento" : "59880de4-1559-49a7-9068-545b478e2cad"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Presenca/cbdd1c0e-de43-4d63-880f-434d2a900837
+    name: Atualizar Presença
+    meta:
+      id: req_4b71bd68e28e4effacbc21c4b430f9b8
+      created: 1787330577698
+      modified: 1787331205814
+      isPrivate: false
+      description: ""
+      sortKey: -1787330577698
+    method: PUT
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Presenca/59880de4-1559-49a7-9068-545b478e2cad
+    name: Listar Presenças por Evento
+    meta:
+      id: req_b4b27b6b480648859056bf2377f1559b
+      created: 1787331059763
+      modified: 1787331197591
+      isPrivate: false
+      description: ""
+      sortKey: -1787331059763
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Presenca/cbdd1c0e-de43-4d63-880f-434d2a900837
+    name: Deletar Presença
+    meta:
+      id: req_fff18c9ec31e4e9181262aac31a302ba
+      created: 1787331192755
+      modified: 1787332438205
+      isPrivate: false
+      description: ""
+      sortKey: -1787331192755
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_dbb5c141cc124ab901bd9e81bf564500a90b585b
+    created: 1787330336784
+    modified: 1787330336784
+environments:
+  name: Base Environment
+  meta:
+    id: env_dbb5c141cc124ab901bd9e81bf564500a90b585b
+    created: 1787330336778
+    modified: 1787330336778
+    isPrivate: false

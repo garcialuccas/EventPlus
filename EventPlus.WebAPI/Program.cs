@@ -1,6 +1,9 @@
 using EventPlus.WebAPI.BdContextEvent;
 using EventPlus.WebAPI.Interfaces;
 using EventPlus.WebAPI.Repositories;
+using EventPlus.WebAPI.Services;
+using EventPlus.WebAPI.Utils;
+using EventPlus.WebAPI.Workers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -22,12 +25,19 @@ builder.Services.AddScoped<IInstituicao, InstituicaoRepository>();
 builder.Services.AddScoped<IEvento, EventoRepository>();
 builder.Services.AddScoped<IComentario, ComentarioRepository>();
 builder.Services.AddScoped<IPresenca, PresencaRepository>();
+builder.Services.AddTransient<IEnviarEmailService, EnviarEmailService>();
 
-builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; }).AddJwtBearer(options => { options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters { ValidateIssuer = true, ValidIssuer = "EventPlus.WebAPI", ValidateAudience = true, ValidAudience = "EventPlus.WebAPI", ValidateLifetime = true, ClockSkew = TimeSpan.FromMinutes(5), IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("eventos-chave-autenticacao-webapi-dev")) }; });
+builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; }).AddJwtBearer(options => { options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters { ValidateIssuer = true, ValidIssuer = "EventPlus.WebAPI", ValidateAudience = true, ValidAudience = "EventPlus.WebAPI", ValidateLifetime = true, ClockSkew = TimeSpan.FromMinutes(5), IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)) }; });
 
 builder.Services.AddAuthorization();
 
+builder.Services.Configure<SighengineSettings>(builder.Configuration.GetSection("Sighengine"));
+
+builder.Services.AddHttpClient<IModerationService, SighengineModerationService>(client => { client.BaseAddress = new Uri("https://api.sighengine.com/1.0/"); });
+
 builder.Services.AddControllers();
+
+builder.Services.AddHostedService<Worker>();
 
 var app = builder.Build();
 

@@ -1,0 +1,141 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Usuario
+meta:
+  id: wrk_6f3557fb68f345ed9b2bedef13b91bbb
+  created: 1786716495680
+  modified: 1786716495680
+  description: ""
+collection:
+  - url: https://localhost:7187/api/Usuario
+    name: Cadastrar Usuario
+    meta:
+      id: req_4b08f6d8b21e4ae3bdc3ea9824683ec9
+      created: 1786716503911
+      modified: 1787324013440
+      isPrivate: false
+      description: ""
+      sortKey: -1786716503911
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"Nome": "Gustavo Gabriel",
+        	"Email": "bigode@email.com",
+        	"Senha": "senhagulosa",
+        	"idTipoUsuario": "6c8f7652-5ee4-41c6-950a-a75c1edc5bef"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Usuario/
+    name: Listar Todos
+    meta:
+      id: req_150328ab347b40c29f2468785671a6ef
+      created: 1786716778277
+      modified: 1786993901164
+      isPrivate: false
+      description: ""
+      sortKey: -1786716778277
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Usuario/160e96b9-3409-4e40-9dbf-6323702d3c37
+    name: Atualizar Usuario
+    meta:
+      id: req_4f22101b531e4671b98b4f06e46dc66e
+      created: 1786717056277
+      modified: 1786989365096
+      isPrivate: false
+      description: ""
+      sortKey: -1786717056277
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Luccas Garcia",
+        	"email": "lucca.melo@email.com",
+        	"senha": "90909090"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Usuario/ac669055-294e-4341-8fe1-755df5773b12
+    name: Deletar Usuario
+    meta:
+      id: req_42e4ad7a39854e6ea598f9bba16e255f
+      created: 1786733935032
+      modified: 1787324555510
+      isPrivate: false
+      description: ""
+      sortKey: -1786733935032
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Usuario/NovaPresenca/160e96b9-3409-4e40-9dbf-6323702d3c37/
+    name: Cadastrar Inscricao
+    meta:
+      id: req_a1679957f4a54497a75297115e00d7b5
+      created: 1786971753694
+      modified: 1786977067642
+      isPrivate: false
+      description: ""
+      sortKey: -1786971753694
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_eaa359d0f0cc2b55870bfbac6a8c45f55a7225be
+    created: 1786716495689
+    modified: 1786716495689
+environments:
+  name: Base Environment
+  meta:
+    id: env_eaa359d0f0cc2b55870bfbac6a8c45f55a7225be
+    created: 1786716495683
+    modified: 1786716495683
+    isPrivate: false

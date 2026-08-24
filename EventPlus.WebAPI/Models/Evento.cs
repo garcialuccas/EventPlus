@@ -28,12 +28,18 @@ public partial class Evento
 
     public Guid? IdInstituicao { get; set; }
 
+    public Guid? IdStatusEvento { get; set; }
+
     [InverseProperty("IdEventoNavigation")]
     public virtual ICollection<Comentario> Comentario { get; set; } = new List<Comentario>();
 
     [ForeignKey("IdInstituicao")]
     [InverseProperty("Evento")]
     public virtual Instituicao? IdInstituicaoNavigation { get; set; }
+
+    [ForeignKey("IdStatusEvento")]
+    [InverseProperty("Evento")]
+    public virtual StatusEvento? IdStatusEventoNavigation { get; set; }
 
     [ForeignKey("IdTipoEvento")]
     [InverseProperty("Evento")]

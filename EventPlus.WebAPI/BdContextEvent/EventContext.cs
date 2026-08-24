@@ -24,15 +24,13 @@ public partial class EventContext : DbContext
 
     public virtual DbSet<Presenca> Presenca { get; set; }
 
+    public virtual DbSet<StatusEvento> StatusEvento { get; set; }
+
     public virtual DbSet<TipoEvento> TipoEvento { get; set; }
 
     public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
 
     public virtual DbSet<Usuario> Usuario { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=D03S22-1252910\\MSSQLSERVER2;Database=EventPlus;User=sa;Password=Senai@134;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,11 +47,15 @@ public partial class EventContext : DbContext
 
         modelBuilder.Entity<Evento>(entity =>
         {
+            entity.ToTable(tb => tb.HasTrigger("trgEventoStatusEvento"));
+
             entity.Property(e => e.IdEvento).HasDefaultValueSql("(newid())");
 
             entity.HasOne(d => d.IdInstituicaoNavigation).WithMany(p => p.Evento)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK_Evento_Instituicao");
+
+            entity.HasOne(d => d.IdStatusEventoNavigation).WithMany(p => p.Evento).HasConstraintName("FK_Evento_StatusEvento");
 
             entity.HasOne(d => d.IdTipoEventoNavigation).WithMany(p => p.Evento)
                 .OnDelete(DeleteBehavior.SetNull)
@@ -74,6 +76,11 @@ public partial class EventContext : DbContext
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Presenca)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK_Presenca_Usuario");
+        });
+
+        modelBuilder.Entity<StatusEvento>(entity =>
+        {
+            entity.Property(e => e.IdStatusEvento).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<TipoEvento>(entity =>

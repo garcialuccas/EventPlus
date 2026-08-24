@@ -1,0 +1,189 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Evento
+meta:
+  id: wrk_b1471641810f4c1f98e971f8472d81f8
+  created: 1786977773728
+  modified: 1786977773728
+  description: ""
+collection:
+  - url: https://localhost:7187/api/Evento/Listar
+    name: Listar Eventos
+    meta:
+      id: req_490a1284d2c341cb9958bda7623c4842
+      created: 1786977793914
+      modified: 1786994178032
+      isPrivate: false
+      description: ""
+      sortKey: -1786977793914
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Evento
+    name: Cadastrar Evento
+    meta:
+      id: req_cf78b4c496d3469ebe6c381b81ed6127
+      created: 1786977914528
+      modified: 1787332651147
+      isPrivate: false
+      description: ""
+      sortKey: -1786977914528
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: NomeEvento
+          value: Almoço
+          description: ""
+          disabled: false
+        - name: DataEvento
+          value: 2026-08-22
+          description: ""
+          disabled: false
+        - name: IdInstituicao
+          value: 71c59e41-783f-4f45-994e-3f3a0990b582
+          description: ""
+          disabled: false
+        - name: Descricao
+          value: Almoço com parmegiana
+          description: ""
+          disabled: false
+        - name: IdTipoEvento
+          value: 819bd7d1-0304-4d34-920b-03ffb1819796
+          description: ""
+          disabled: false
+        - name: ImagemUrl
+          value: ""
+          description: ""
+          disabled: false
+          fileName: C:\Users\54568203821\Downloads\bife-a-parmegiana.webp
+          type: file
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Evento/3c97bfa7-4920-4973-a17d-0725466c1378
+    name: Deletar Evento
+    meta:
+      id: req_584fe238c7e749118004ed322bd5b7c0
+      created: 1786978323133
+      modified: 1786978733266
+      isPrivate: false
+      description: ""
+      sortKey: -1786978323133
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Evento/59880de4-1559-49a7-9068-545b478e2cad
+    name: Atualizar Evento
+    meta:
+      id: req_c660299293b8493d8273b2586d72ebc8
+      created: 1786978461292
+      modified: 1786978784574
+      isPrivate: false
+      description: ""
+      sortKey: -1786978461292
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"NomeEvento": "Jantar"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Evento/ListarProximos
+    name: Listar Eventos Próximos
+    meta:
+      id: req_6e2d6f098bdd4a9496ede2d5d6e99dc6
+      created: 1786978803292
+      modified: 1786979006741
+      isPrivate: false
+      description: ""
+      sortKey: -1786978803292
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Evento/ListarPorInstituicao/71c59e41-783f-4f45-994e-3f3a0990b582
+    name: Listar Eventos Por Instituição
+    meta:
+      id: req_de4f261e123c483c97b0c2379333326c
+      created: 1786979002313
+      modified: 1787333881447
+      isPrivate: false
+      description: ""
+      sortKey: -1786979002313
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Evento/ListarPorInscrito/42b2b205-fc4b-4913-9a85-48124c7d6bab
+    name: Listar Eventos por Inscrito
+    meta:
+      id: req_74adaaadc2f344998b004da0d8504a41
+      created: 1787333869218
+      modified: 1787334740396
+      isPrivate: false
+      description: ""
+      sortKey: -1787333869218
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_31ca5cc6c900913a21adfa832549b6e2db8d0c26
+    created: 1786977773734
+    modified: 1786977773734
+environments:
+  name: Base Environment
+  meta:
+    id: env_31ca5cc6c900913a21adfa832549b6e2db8d0c26
+    created: 1786977773731
+    modified: 1786977773731
+    isPrivate: false

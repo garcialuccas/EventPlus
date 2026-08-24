@@ -11,10 +11,12 @@ namespace EventPlus.WebAPI.Controllers
     public class ComentarioController : ControllerBase
     {
         private readonly IComentario _repository;
+        private readonly IModerationService _moderationService;
 
-        public ComentarioController(IComentario repository)
+        public ComentarioController(IComentario repository, IModerationService moderationService)
         {
             _repository = repository;
+            _moderationService = moderationService;
         }
 
         [HttpPost]
@@ -22,12 +24,14 @@ namespace EventPlus.WebAPI.Controllers
         {
             try
             {
+                bool reprovado = await _moderationService.ModerarTexto(dto.descricao);
+
                 var c = new Comentario
                 {
                     IdUsuario = dto.idUsuario,
                     IdEvento = dto.idEvento,
                     Descricao = dto.descricao,
-                    Exibe = dto.exibe,
+                    Exibe = !reprovado,
                     DataComentario = dto.DataComentario
                 };
                 return StatusCode(201, await _repository.Cadastrar(c));

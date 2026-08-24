@@ -58,9 +58,9 @@ namespace EventPlus.WebAPI.Controllers
                 };
                 return StatusCode(201, await _repository.Cadastrar(e));
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 

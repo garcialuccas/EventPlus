@@ -1,0 +1,130 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Comentario
+meta:
+  id: wrk_7e1a84758d5e48b78433056714409757
+  created: 1786993677970
+  modified: 1786993677970
+  description: ""
+collection:
+  - url: https://localhost:7187/api/Comentario/Listar
+    name: Listar Comentario
+    meta:
+      id: req_cfc85f80f2144f979d7290069d3014da
+      created: 1786993681503
+      modified: 1786994630223
+      isPrivate: false
+      description: ""
+      sortKey: -1786993681503
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Comentario
+    name: Cadastrar Comentario
+    meta:
+      id: req_e15abcf26cb34f42a9e99a31240d3934
+      created: 1786994037716
+      modified: 1786994573596
+      isPrivate: false
+      description: ""
+      sortKey: -1786994037716
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"idUsuario" : "160e96b9-3409-4e40-9dbf-6323702d3c37",
+        	"idEvento" : "59880de4-1559-49a7-9068-545b478e2cad",
+        	"descricao" : "testedastestadasgulosas",
+        	"exibe" : true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Comentario/Evento/59880de4-1559-49a7-9068-545b478e2cad
+    name: Listar por evento
+    meta:
+      id: req_a79e2992e16041ddbae114c14d618117
+      created: 1786994397026
+      modified: 1786994725761
+      isPrivate: false
+      description: ""
+      sortKey: -1786994397026
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Comentario/Usuario/160e96b9-3409-4e40-9dbf-6323702d3c37
+    name: Listar por usuario
+    meta:
+      id: req_d7ffe84ee0d241b3aabcff41b08b1340
+      created: 1786994728063
+      modified: 1786994829309
+      isPrivate: false
+      description: ""
+      sortKey: -1786994728063
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7187/api/Comentario/e73cabaf-7a5e-4f9d-b174-682b879605c1
+    name: Atualizar Exibe
+    meta:
+      id: req_b34860dbada14c89b298091e249e989f
+      created: 1786994820778
+      modified: 1786994951832
+      isPrivate: false
+      description: ""
+      sortKey: -1786994820778
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e182937ed2d084b409a5810c1ed0a23ff0f69ddb
+    created: 1786993677980
+    modified: 1786993677980
+environments:
+  name: Base Environment
+  meta:
+    id: env_e182937ed2d084b409a5810c1ed0a23ff0f69ddb
+    created: 1786993677975
+    modified: 1786993677975
+    isPrivate: false

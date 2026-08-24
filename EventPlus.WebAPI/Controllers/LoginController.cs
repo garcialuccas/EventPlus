@@ -15,10 +15,12 @@ namespace EventPlus.WebAPI.Controllers
     public class LoginController : ControllerBase
     {
         private readonly IUsuario _repository;
+        private readonly IConfiguration _configuration;
 
-        public LoginController(IUsuario repository)
+        public LoginController(IUsuario repository, IConfiguration configuration)
         {
             _repository = repository;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -40,7 +42,7 @@ namespace EventPlus.WebAPI.Controllers
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
 
-                var chaveSecreta = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("eventos-chave-autenticacao-webapi-dev"));
+                var chaveSecreta = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
 
                 var credenciais = new SigningCredentials(chaveSecreta, SecurityAlgorithms.HmacSha256);
 

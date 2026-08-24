@@ -4,17 +4,18 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9a2b4f13-e5b6-4c78-85c0-dccd39a9a981</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="DbContextEvent\" />
-    <Folder Include="Services\" /> 
+    <Folder Include="DbContextEvent\" /> 
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
     <PackageReference Include="CloudinaryDotNet" Version="1.29.3" />
+    <PackageReference Include="MailKit" Version="4.17.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.10">
