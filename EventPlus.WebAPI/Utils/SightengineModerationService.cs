@@ -36,14 +36,14 @@ namespace EventPlus.WebAPI.Utils
 
             var root = doc.RootElement;
 
-            if (root.GetProperty("status").GetString() != "sucess")
+            if (root.GetProperty("status").GetString() != "success")
             {
                 var msg = root.TryGetProperty("error", out var err) && err.TryGetProperty("message", out var m) ? m.GetString() : "erro desconhecido";
 
                 throw new Exception($"Sightengine: {msg}");
             }
 
-            var classes = root.GetProperty("moderatoin_classes");
+            var classes = root.GetProperty("moderation_classes");
 
             foreach (var prop in classes.EnumerateObject())
             {
