@@ -4,7 +4,7 @@ namespace EventPlus.WebAPI.Interfaces
 {
     public interface IComentario
     {
-        Task<Comentario> Cadastrar(Comentario c);
+        Task<Comentario?> Cadastrar(Comentario c);
 
         Task<List<Comentario>> ListarPorEvento(Guid idEvento);
 

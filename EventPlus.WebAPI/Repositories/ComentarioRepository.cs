@@ -14,11 +14,16 @@ namespace EventPlus.WebAPI.Repositories
             _context = context;
         }
 
-        public async Task<Comentario> Cadastrar(Comentario c)
+        public async Task<Comentario?> Cadastrar(Comentario c)
         {
-            await _context.Comentario.AddAsync(c);
-            await _context.SaveChangesAsync();
-            return await _context.Comentario.FindAsync(c.IdComentario);
+            if (await _context.Presenca.FirstOrDefaultAsync(x => x.IdUsuario == c.IdUsuario && x.IdEvento == c.IdEvento && x.Situacao) != null)
+            {
+                await _context.Comentario.AddAsync(c);
+                await _context.SaveChangesAsync();
+                return await _context.Comentario.FindAsync(c.IdComentario);
+            }
+
+            return null;
         }
 
         public async Task Deletar(Guid id)

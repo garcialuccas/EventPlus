@@ -31,9 +31,12 @@ builder.Services.AddAuthentication(options => { options.DefaultAuthenticateSchem
 
 builder.Services.AddAuthorization();
 
-builder.Services.Configure<SighengineSettings>(builder.Configuration.GetSection("Sighengine"));
+builder.Services.Configure<SightengineSettings>(builder.Configuration.GetSection("Sightengine"));
 
-builder.Services.AddHttpClient<IModerationService, SighengineModerationService>(client => { client.BaseAddress = new Uri("https://api.sighengine.com/1.0/"); });
+builder.Services.AddHttpClient<IModerationService, SightengineModerationService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.sightengine.com/1.0/");
+});
 
 builder.Services.AddControllers();
 
