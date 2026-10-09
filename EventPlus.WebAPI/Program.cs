@@ -11,6 +11,17 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers().AddJsonOptions(Options =>
@@ -43,6 +54,8 @@ builder.Services.AddControllers();
 builder.Services.AddHostedService<Worker>();
 
 var app = builder.Build();
+
+app.UseCors("Frontend");
 
 app.UseHttpsRedirection();
 

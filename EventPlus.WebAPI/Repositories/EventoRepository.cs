@@ -55,7 +55,7 @@ namespace EventPlus.WebAPI.Repositories
 
         public async Task<List<Evento>> Listar()
         {
-            return await _context.Evento.AsNoTracking().ToListAsync();
+            return await _context.Evento.Include(e => e.IdTipoEventoNavigation).AsNoTracking().ToListAsync();
         }
 
         public async Task<List<Evento>> ListarPorInscrito(Guid idInscrito)
